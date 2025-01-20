@@ -1,0 +1,97 @@
+# Відстеження папок і файлів, згенерованих компілятором
+bin/
+obj/
+out/
+*.exe
+*.dll
+*.pdb
+*.log
+*.cache
+*.ide
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Папки публікації
+publish/
+build/
+
+# Лог-файли
+*.log
+*.tlog
+
+# Конфігураційні файли користувачів
+*.vs/
+.vscode/
+*.DS_Store
+*.directory
+
+# Файли налаштувань JetBrains Rider/IDEA
+.idea/
+
+# Пакети NuGet
+*.nupkg
+*.snupkg
+*.nuget/
+packages/
+project.lock.json
+project.fragment.lock.json
+.nuget/
+
+# Налаштування веб-сервера IIS
+.vs/Config/
+
+# Кеш-файли
+*.pidb
+*.svclog
+*.scc
+
+# Папки тимчасових файлів
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Інші IDE файли
+_ReSharper*/
+*_ReSharper*/
+*.resharper
+*.DotSettings.user
+*.DotSettings
+*~*
+
+# Локальні файли IDE (наприклад, Visual Studio)
+*.dbmdl
+*.jfm
+*.psess
+TestResults/
+
+# Docker файли
+docker-compose.override.yml
+.docker/
+
+# Сертифікати
+*.crt
+*.key
+
+# Файли CI/CD
+*.ci/
+.idea/
+
+# Файли, згенеровані MSBuild
+*.Build.Cache/
+msbuild.log
+*.csproj.user
+
+# Для систем macOS та Linux
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+
+# Інші тимчасові файли
+*.bak
+*.swp
+*.swo
