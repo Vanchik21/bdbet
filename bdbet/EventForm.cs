@@ -7,8 +7,6 @@ namespace bdbet
     public partial class EventForm : Form
     {
         public int eventId;
-        private readonly string connectionString = "Data Source=DESKTOP-NEW-SERVER;Initial Catalog=MyDatabase;Integrated Security=True";
-
         public EventForm(int eventId)
         {
             InitializeComponent();
@@ -51,6 +49,7 @@ namespace bdbet
 
         private void SaveEvent(string eventName, DateTime eventDate, decimal odds, bool isActive, int eventId)
         {
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\bdbet\\bdbet\\Database1.mdf;Integrated Security=True"; 
             string query;
 
             if (eventId == 0)

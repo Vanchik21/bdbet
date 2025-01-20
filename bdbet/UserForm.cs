@@ -22,7 +22,7 @@ namespace bdbet
 
         private void LoadUserData(int userId)
         {
-            using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\bdbet\\bdbet\\Database1.mdf;Integrated Security=True"))
             {
                 string sql = "SELECT Username, Balance FROM Users WHERE Id = @UserId";
                 SqlCommand command = new SqlCommand(sql, connection);
@@ -51,7 +51,7 @@ namespace bdbet
 
         private void LoadActiveEvents()
         {
-            using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\bdbet\\bdbet\\Database1.mdf;Integrated Security=True"))
             {
                 string query = "SELECT EventId, Name, EventDate, Odds FROM Events WHERE IsActive = 1";
                 SqlDataAdapter da = new SqlDataAdapter(query, connection);
@@ -64,7 +64,7 @@ namespace bdbet
 
         private void UpdateUserBalance(int userId, float amountToAdd)
         {
-            using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\bdbet\\bdbet\\Database1.mdf;Integrated Security=True"))
             {
                 string sql = "UPDATE Users SET Balance = Balance + @Amount WHERE Id = @UserId";
                 SqlCommand command = new SqlCommand(sql, connection);
@@ -123,6 +123,7 @@ namespace bdbet
 
             int eventId = Convert.ToInt32(dataGridView1.CurrentRow.Cells["EventId"].Value);
 
+
             if (PlaceBet(this.userId, eventId, amount))
             {
                 MessageBox.Show("Ставку розміщено успішно.");
@@ -139,7 +140,7 @@ namespace bdbet
                 return false;
             }
 
-            using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True"))
+            using (SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\bdbet\\bdbet\\Database1.mdf;Integrated Security=True"))
             {
                 try
                 {
@@ -174,7 +175,7 @@ namespace bdbet
         private double GetBalance(int id)
         {
             double balance = 0;
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\bdbet\\bdbet\\Database1.mdf;Integrated Security=True";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -204,7 +205,7 @@ namespace bdbet
         private decimal GetOddsForEvent(int eventId)
         {
             decimal odds = 0;
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\bdbet\\bdbet\\Database1.mdf;Integrated Security=True";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

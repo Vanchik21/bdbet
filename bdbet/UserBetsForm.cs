@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+
 using System.Windows.Forms;
 
 namespace bdbet
@@ -12,9 +13,7 @@ namespace bdbet
         }
         public void LoadUserBets(int userId)
         {
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\bdbet\\bdbet\\Database1.mdf;Integrated Security=True"))
             {
                 string query = $"SELECT Id, EventId, Amount, Odds FROM Bets WHERE UserId = @UserId";
                 SqlDataAdapter da = new SqlDataAdapter(query, connection);
@@ -26,7 +25,6 @@ namespace bdbet
         }
         private void dataGridViewBets_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
     }
 }

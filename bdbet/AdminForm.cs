@@ -12,10 +12,9 @@ namespace bdbet
             InitializeComponent();
             LoadEvents();
         }
-
         private void LoadEvents()
         {
-            using (SqlConnection conn = new SqlConnection("Server=localhost;Database=bdbet;Trusted_Connection=True;"))
+            using (SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\bdbet\\bdbet\\Database1.mdf;Integrated Security=True"))
             {
                 try
                 {
@@ -35,7 +34,6 @@ namespace bdbet
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'database1DataSet.Events' table. You can move, or remove it, as needed.
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -77,7 +75,6 @@ namespace bdbet
                 if (MessageBox.Show("Ви впевнені, що хочете видалити цю подію?", "Підтвердження", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     int eventId = Convert.ToInt32(dataGridView1.CurrentRow.Cells["EventId"].Value);
-
                     DeleteEvent(eventId);
                     LoadEvents();
                 }
@@ -87,10 +84,9 @@ namespace bdbet
                 MessageBox.Show("Будь ласка, виберіть подію для видалення.");
             }
         }
-
         private void DeleteEvent(int eventId)
         {
-            string connectionString = "Server=localhost;Database=bdbet;Trusted_Connection=True;";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\bdbet\\bdbet\\Database1.mdf;Integrated Security=True";
             string query = "DELETE FROM Events WHERE EventId = @EventId";
 
             using (SqlConnection connection = new SqlConnection(connectionString))

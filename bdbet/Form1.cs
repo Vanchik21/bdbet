@@ -8,11 +8,10 @@ namespace bdbet
 {
     public partial class Form1 : Form
     {
-        private readonly string connectionString = "Data Source=DESKTOP-NEW-SERVER;Initial Catalog=MyDatabase;Integrated Security=True";
-
         public void RegisterUser(string username, string password, string role = "User")
         {
             string hashedPassword = HashPassword(password);
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\bdbet\\bdbet\\Database1.mdf;Integrated Security=True";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -30,11 +29,11 @@ namespace bdbet
                 }
             }
         }
-
         public int TryLogin(string username, string password, out string role)
         {
             string hashedPassword = HashPassword(password);
             role = null;
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\bdbet\\bdbet\\Database1.mdf;Integrated Security=True";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -75,7 +74,6 @@ namespace bdbet
                 return builder.ToString();
             }
         }
-
         public Form1()
         {
             InitializeComponent();
@@ -99,8 +97,8 @@ namespace bdbet
                 if (check != 0 && login == "admin")
                 {
                     MessageBox.Show("root");
-                    AdminForm adminForm = new AdminForm();
-                    adminForm.Show();
+                    AdminForm AdminForm = new AdminForm();
+                    AdminForm.Show();
                 }
                 else if (check == 0) { MessageBox.Show("Bad(("); }
             }
@@ -109,7 +107,6 @@ namespace bdbet
                 RegisterUser(login, password, role);
             }
         }
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             label4.Visible = checkBox1.Checked;
